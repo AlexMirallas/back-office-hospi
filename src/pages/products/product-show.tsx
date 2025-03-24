@@ -1,4 +1,4 @@
-import { BooleanField, DateField, Show, SimpleShowLayout, TextField } from 'react-admin';
+import { BooleanField, DateField, Show, SimpleShowLayout, TextField, NumberField } from 'react-admin';
 
 const ProductShow = () => (
     <Show>
@@ -7,7 +7,13 @@ const ProductShow = () => (
             <TextField source="reference" />
             <TextField source="name" />
             <TextField source="description" />
-            <TextField source="basePrice" />
+            <NumberField source="basePrice" options={{
+                style: "currency",
+                currency: "EUR",
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            }}
+            />
             <BooleanField source="active" />
             <DateField source="createdAt" />
             <DateField source="updatedAt" />
