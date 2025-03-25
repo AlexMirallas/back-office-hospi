@@ -1,4 +1,4 @@
-import { BooleanField, Datagrid, List, NumberField, TextField } from 'react-admin';
+import { BooleanField, Datagrid, List, NumberField, TextField, EditButton } from 'react-admin';
 
 const CategoryList = () => (
     <List>
@@ -7,6 +7,7 @@ const CategoryList = () => (
             <TextField source="name" />
             <BooleanField source="active" />
             <NumberField source="position" />
+            <EditButton label="Modifier" />
         </Datagrid>
     </List>
 );

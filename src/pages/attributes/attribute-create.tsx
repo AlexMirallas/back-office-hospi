@@ -1,7 +1,7 @@
-import { ArrayInput, BooleanInput, Edit, NumberInput, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin';
+import { ArrayInput, BooleanInput, Create, NumberInput, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin';
 
-const AttributeEdit = () => (
-    <Edit>
+const AttributeCreate = () => (
+    <Create>
         <SimpleForm>
             <TextInput source="id" />
             <TextInput source="name" />
@@ -16,7 +16,7 @@ const AttributeEdit = () => (
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>
-    </Edit>
+    </Create>
 );
 
-export default AttributeEdit;
+export default AttributeCreate;

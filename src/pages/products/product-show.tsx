@@ -1,6 +1,8 @@
-import { BooleanField, DateField, Show, SimpleShowLayout, TextField, NumberField } from 'react-admin';
+import { BooleanField, DateField, Show, SimpleShowLayout, TextField, NumberField, ReferenceManyField, SingleFieldList } from 'react-admin';
 
-const ProductShow = () => (
+const ProductShow = () => {
+
+    return (
     <Show>
         <SimpleShowLayout>
             <TextField source="id" />
@@ -17,8 +19,11 @@ const ProductShow = () => (
             <BooleanField source="active" />
             <DateField source="createdAt" />
             <DateField source="updatedAt" />
+            <ReferenceManyField source="categories" reference="categories" target="productId">
+                <SingleFieldList />
+            </ReferenceManyField>
         </SimpleShowLayout>
     </Show>
-);
+)};
 
 export default ProductShow;
