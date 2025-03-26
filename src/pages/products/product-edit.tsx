@@ -1,4 +1,4 @@
-import { ArrayInput, BooleanInput, DateInput, Edit, NumberInput, SimpleForm, SimpleFormIterator, TextInput, ReferenceArrayInput } from 'react-admin';
+import { ArrayInput, BooleanInput, Edit, NumberInput, SimpleForm, SimpleFormIterator, TextInput, ReferenceArrayInput, SelectArrayInput } from 'react-admin';
 
 const ProductEdit = () => (
     <Edit>
@@ -9,10 +9,12 @@ const ProductEdit = () => (
             <TextInput source="description" />
             <TextInput source="basePrice" />
             <BooleanInput source="active" />
-            <ReferenceArrayInput source="categories" reference="categories" target="productId"/>
+            <ReferenceArrayInput source="categories" reference="categories" >
+                <SelectArrayInput optionText="name" />
+            </ReferenceArrayInput>
             <ArrayInput source="combinations">
                 <SimpleFormIterator>
-                    <TextInput source="id" />
+                    <TextInput source="id" sx={{block: "hidden"}} />
                     <TextInput source="reference" />
                     <NumberInput source="price" />
                     <NumberInput source="impactOnPrice" />
@@ -28,8 +30,6 @@ const ProductEdit = () => (
                     </ArrayInput>
                 </SimpleFormIterator>
             </ArrayInput>
-            <DateInput source="createdAt" />
-            <DateInput source="updatedAt" />
         </SimpleForm>
     </Edit>
 );

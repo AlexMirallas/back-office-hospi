@@ -1,4 +1,5 @@
-import { BooleanField, Datagrid, DateField, List, NumberField, TextField, EditButton, SearchInput, FunctionField } from 'react-admin';
+import { BooleanField, DateField, List, NumberField, TextField, EditButton, SearchInput, FunctionField } from 'react-admin';
+import { MyDatagrid } from '../../components/MyDatagrid';
 
 const ProductList = () => {
 
@@ -6,7 +7,7 @@ const ProductList = () => {
 
     return (
      <List filters={postFilters}>
-        <Datagrid sx={{
+        <MyDatagrid sx={{
             backgroundColor: "Lavender",
             "& .RaDatagrid-headerCell": {
                 backgroundColor: "MistyRose",
@@ -29,7 +30,7 @@ const ProductList = () => {
             <DateField source="createdAt" />
             <DateField source="updatedAt" />
             <EditButton label="Modifier" />
-        </Datagrid>
+        </MyDatagrid>
     </List>
 )};
 

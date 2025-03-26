@@ -9,7 +9,6 @@ const AttributeEdit = () => (
             <BooleanInput source="active" />
             <ArrayInput source="values">
                 <SimpleFormIterator>
-                    <TextInput source="id" />
                     <TextInput source="value" />
                     <TextInput source="color" />
                     <NumberInput source="position" />

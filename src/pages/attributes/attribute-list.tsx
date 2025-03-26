@@ -1,14 +1,15 @@
-import { BooleanField, Datagrid, List, NumberField, TextField, EditButton } from 'react-admin';
+import { BooleanField, List, NumberField, TextField, EditButton } from 'react-admin';
+import { MyDatagrid } from '../../components/MyDatagrid';
 
 const AttributeList = () => (
     <List>
-        <Datagrid>
+        <MyDatagrid>
             <TextField source="id" />
             <TextField source="name" />
             <NumberField source="position" />
             <BooleanField source="active" />
             <EditButton label="Modifier" />
-        </Datagrid>
+        </MyDatagrid>
     </List>
 );
 

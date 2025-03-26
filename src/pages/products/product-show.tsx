@@ -1,4 +1,4 @@
-import { BooleanField, DateField, Show, SimpleShowLayout, TextField, NumberField, ReferenceManyField, SingleFieldList } from 'react-admin';
+import { BooleanField, DateField, Show, SimpleShowLayout, TextField, NumberField, ReferenceManyField, Datagrid, ReferenceField, ArrayField,SingleFieldList,ChipField} from 'react-admin';
 
 const ProductShow = () => {
 
@@ -19,9 +19,11 @@ const ProductShow = () => {
             <BooleanField source="active" />
             <DateField source="createdAt" />
             <DateField source="updatedAt" />
-            <ReferenceManyField source="categories" reference="categories" target="productId">
-                <SingleFieldList />
-            </ReferenceManyField>
+            <ArrayField source="categories" >
+                <SingleFieldList linkType={false}>
+                    <ChipField source="name" size="medium" />
+                </SingleFieldList>
+            </ArrayField>
         </SimpleShowLayout>
     </Show>
 )};

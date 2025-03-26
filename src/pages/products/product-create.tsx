@@ -1,4 +1,4 @@
-import { Create, SimpleForm, TextInput, BooleanInput, NumberInput, ReferenceArrayInput } from 'react-admin';
+import { Create, SimpleForm, TextInput, BooleanInput, NumberInput, ReferenceArrayInput,SelectArrayInput } from 'react-admin';
 
 const ProductCreate = () => {
     return ( 
@@ -9,7 +9,9 @@ const ProductCreate = () => {
                 <TextInput source="description" />
                 <NumberInput source="basePrice" />
                 <BooleanInput source="active" />
-                <ReferenceArrayInput source="categories" reference="categories" target="productId"/>
+                <ReferenceArrayInput source="categories" reference="categories">
+                    <SelectArrayInput optionText="name"  />
+                </ReferenceArrayInput>
             </SimpleForm>    
         </Create>
      );

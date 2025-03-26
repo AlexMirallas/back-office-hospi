@@ -1,4 +1,4 @@
-import { BooleanField, NumberField, ReferenceManyField, Show, SimpleShowLayout, TextField, SingleFieldList } from 'react-admin';
+import { BooleanField, NumberField, ArrayField, Show, SimpleShowLayout, TextField, SingleFieldList } from 'react-admin';
 
 const AttributeShow = () => (
     <Show>
@@ -7,9 +7,11 @@ const AttributeShow = () => (
             <TextField source="name" />
             <NumberField source="position" />
             <BooleanField source="active" />
-            <ReferenceManyField reference="values" target="attributeId">
-                <SingleFieldList />
-            </ReferenceManyField>
+            <ArrayField source="values">
+                <SingleFieldList>
+                    <TextField source="value" />
+                </SingleFieldList>
+            </ArrayField>
         </SimpleShowLayout>
     </Show>
 );
