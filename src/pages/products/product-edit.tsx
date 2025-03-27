@@ -1,28 +1,26 @@
-import { ArrayInput, BooleanInput, Edit, NumberInput, SimpleForm, SimpleFormIterator, TextInput, ReferenceArrayInput, SelectArrayInput } from 'react-admin';
+import { ArrayInput, BooleanInput, Edit, NumberInput, SimpleForm, SimpleFormIterator, TextInput, ReferenceArrayInput, } from 'react-admin';
+import { Stack } from '@mui/material';
 
 const ProductEdit = () => (
     <Edit>
         <SimpleForm>
-            <TextInput source="id" />
             <TextInput source="reference" />
             <TextInput source="name" />
             <TextInput source="description" />
             <TextInput source="basePrice" />
             <BooleanInput source="active" />
-            <ReferenceArrayInput source="categories" reference="categories" >
-                <SelectArrayInput optionText="name" />
-            </ReferenceArrayInput>
+            <ReferenceArrayInput source="name" reference="categories" label="Categories" />
             <ArrayInput source="combinations">
                 <SimpleFormIterator>
-                    <TextInput source="id" sx={{block: "hidden"}} />
+                    <Stack direction="row" gap={1}>
                     <TextInput source="reference" />
                     <NumberInput source="price" />
                     <NumberInput source="impactOnPrice" />
                     <NumberInput source="quantity" />
                     <BooleanInput source="active" />
+                    </Stack>
                     <ArrayInput source="attributeValues">
                         <SimpleFormIterator>
-                            <TextInput source="id" />
                             <TextInput source="value" />
                             <TextInput source="color" />
                             <NumberInput source="position" />

@@ -3,7 +3,6 @@ import { BooleanInput, Edit, NumberInput, SimpleForm, TextInput } from 'react-ad
 const CategoryEdit = () => (
     <Edit>
         <SimpleForm>
-            <TextInput source="id" />
             <TextInput source="name" />
             <BooleanInput source="active" />
             <NumberInput source="position" />

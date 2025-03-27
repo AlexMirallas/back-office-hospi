@@ -1,4 +1,5 @@
-import { BooleanField, DateField, Show, SimpleShowLayout, TextField, NumberField, ReferenceManyField, Datagrid, ReferenceField, ArrayField,SingleFieldList,ChipField} from 'react-admin';
+import { BooleanField, DateField, Show, SimpleShowLayout, TextField, NumberField, FunctionField } from 'react-admin';
+
 
 const ProductShow = () => {
 
@@ -19,11 +20,7 @@ const ProductShow = () => {
             <BooleanField source="active" />
             <DateField source="createdAt" />
             <DateField source="updatedAt" />
-            <ArrayField source="categories" >
-                <SingleFieldList linkType={false}>
-                    <ChipField source="name" size="medium" />
-                </SingleFieldList>
-            </ArrayField>
+            <FunctionField label="Categories" render={record => record.categories.map((category: any) => category.name).join(', ')}    /> 
         </SimpleShowLayout>
     </Show>
 )};

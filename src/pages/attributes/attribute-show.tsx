@@ -1,4 +1,4 @@
-import { BooleanField, NumberField, ArrayField, Show, SimpleShowLayout, TextField, SingleFieldList } from 'react-admin';
+import { BooleanField, NumberField, Show, SimpleShowLayout, TextField, FunctionField } from 'react-admin';
 
 const AttributeShow = () => (
     <Show>
@@ -7,11 +7,7 @@ const AttributeShow = () => (
             <TextField source="name" />
             <NumberField source="position" />
             <BooleanField source="active" />
-            <ArrayField source="values">
-                <SingleFieldList>
-                    <TextField source="value" />
-                </SingleFieldList>
-            </ArrayField>
+            <FunctionField label="Values" render={record => record.values.map((value: any) => value.value).join(', ')}   /> 
         </SimpleShowLayout>
     </Show>
 );
