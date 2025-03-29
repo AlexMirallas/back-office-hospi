@@ -1,35 +1,49 @@
-import { ArrayInput, BooleanInput, Edit, NumberInput, SimpleForm, SimpleFormIterator, TextInput, ReferenceArrayInput, } from 'react-admin';
+import { ArrayInput, BooleanInput, Edit, NumberInput, SimpleForm, TextInput, AutocompleteArrayInput, ReferenceArrayInput, SimpleFormIterator, ReferenceInput } from 'react-admin';
 import { Stack } from '@mui/material';
 
-const ProductEdit = () => (
+
+const ProductEdit = () => {
+   
+
+    return(
     <Edit>
-        <SimpleForm>
+        <SimpleForm >
             <TextInput source="reference" />
             <TextInput source="name" />
             <TextInput source="description" />
-            <TextInput source="basePrice" />
+            <NumberInput source="basePrice" />
             <BooleanInput source="active" />
-            <ReferenceArrayInput source="name" reference="categories" label="Categories" />
+            <ReferenceArrayInput
+                reference="categories"
+                source="categories"
+                parse={(value) => value && value.map((v: any) => ({ id: v }))}
+                format={(value) => value && value.map((v: any) => v.id)}
+            >
+                <AutocompleteArrayInput 
+                    optionText={(choice: any) => choice.name}
+                    optionValue="id"
+                />
+            </ReferenceArrayInput>
             <ArrayInput source="combinations">
                 <SimpleFormIterator>
                     <Stack direction="row" gap={1}>
-                    <TextInput source="reference" />
-                    <NumberInput source="price" />
-                    <NumberInput source="impactOnPrice" />
-                    <NumberInput source="quantity" />
-                    <BooleanInput source="active" />
+                        <TextInput source="reference" />
+                        <NumberInput source="price" />
+                        <NumberInput source="impactOnPrice" />
+                        <NumberInput source="quantity" />
+                        <BooleanInput source="active" />
                     </Stack>
-                    <ArrayInput source="attributeValues">
+                    <ArrayInput source="attributes">
                         <SimpleFormIterator>
-                            <TextInput source="value" />
-                            <TextInput source="color" />
-                            <NumberInput source="position" />
+                            <Stack direction="row" gap={1}>
+                                <ReferenceInput source="value" reference="values" optionText="name" optionValue="id" />
+                            </Stack>
                         </SimpleFormIterator>
                     </ArrayInput>
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>
     </Edit>
-);
+)};
 
 export default ProductEdit;

@@ -1,5 +1,4 @@
-import { Create, SimpleForm, TextInput, BooleanInput, NumberInput, CheckboxGroupInput, ReferenceArrayInput } from 'react-admin';
-import { Stack } from '@mui/material';
+import { Create, SimpleForm, TextInput, BooleanInput, NumberInput, ReferenceArrayInput, AutocompleteArrayInput } from 'react-admin';
 
 const ProductCreate = () => {
     return ( 
@@ -10,11 +9,14 @@ const ProductCreate = () => {
                 <TextInput source="description" />
                 <NumberInput source="basePrice" />
                 <BooleanInput source="active" />
-                <Stack direction="row" gap={50}>
-                    <ReferenceArrayInput source="categories" reference="categories">
-                        <CheckboxGroupInput optionText="name" label="Categories" defaultValue={[]}  />
-                    </ReferenceArrayInput>
-                </Stack>
+                <ReferenceArrayInput
+                reference="categories"
+                source="categories"
+                parse={(value) => value && value.map((v: any) => ({ id: v }))}
+                format={(value) => value && value.map((v: any) => v.id)}
+            >
+                <AutocompleteArrayInput />
+            </ReferenceArrayInput>
             </SimpleForm>    
         </Create>
      );
